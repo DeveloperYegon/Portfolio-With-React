@@ -2,16 +2,15 @@ import React from 'react'
 
 function Services() {
   return (
-    <main>
-         <div className=' text-white mx-4 md:mx-20 my-10 rounded-xl bg-[#182B5C]  py-3 px-3  h-full'>
-                  <h3 className='text-center text-2xl'>Services</h3>
-                  <hr className='bg-white w-[80%] h-1 m-auto'/>
-                <div className='grid md:grid-cols-2 m-10 gap-5'>
-                      <div className='flex border p-5 items-center gap-5'>Web Development</div>
-                      <div className='flex border p-5 items-center gap-5'>Chatbot Integrations</div>
-                      <div className='flex border p-5 items-center gap-5'>Wordpress Development</div>
+    <main className=' text-white h-screen shadow-lg shadow-[#634939] mx-4 md:mx-20 my-10 rounded-xl bg-[#46567C]  py-5 px-3 '>
+                  <h3 className='text-center text-4xl py-4'>Services</h3>
+                  <hr className=' w-[50%] h-1 bg-[#ED7D3B] m-auto'/>
+                <div className=' m-10 gap-5'>
+                      <div className='flex my-3 bg-white font-bold text-black border p-5 items-center '>Web Development</div>
+                      <div className='fflex my-3 bg-white font-bold text-black border p-5 items-center'>API Integrations</div>
+                      <div className='flex my-3 bg-white font-bold text-black border p-5 items-center'>Wordpress Development</div>
+                      <div className='flex my-3 bg-white font-bold text-black border p-5 items-center'>Android Development</div>
                 </div>
-          </div>
     </main>
   )
 }

@@ -4,9 +4,9 @@ import SliderComponent from '../Components/SliderComponent';
 
 function Reviews() {
   return (
-   <main className=' text-white mx-4 md:mx-20 my-10 rounded-xl bg-[#182B5C]  py-3 px-3  h-full'>
+   <main className=' text-[#fff] h-full rounded-xl shadow-lg shadow-[#7a5d4c] p-10  bg-[#46567C]  py-3 md:mx-20 m-3 '>
       
-                  <h3 className='text-center'>Reviews</h3>
+                  <h3 className='text-center font-bold text-4xl'>Reviews</h3>
                   <hr className='bg-white w-[80%] m-auto'/>
                   <div className='h-full p-10'>
                     <SliderComponent/>

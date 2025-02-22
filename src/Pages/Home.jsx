@@ -2,8 +2,10 @@ import React from 'react'
 import Skills from '../Components/Skills';
 import Services from '../Components/Services';
 import Hero from '../Components/Hero';
-import Achievments from '../Components/Achievments';
 import Reviews from '../Components/Reviews';
+import Contact from './Contact';
+import ProjectPage from './ProjectPage';
+import Donate from './Donate';
 
 function Home(){
 
@@ -12,7 +14,7 @@ function Home(){
 
   return (
 
-    <main className='bg-[#fff]'>
+    <main className='bg-[#182B5C] py-10'>
 
      {/* //profile section */}
           <Hero/>
@@ -23,11 +25,12 @@ function Home(){
      {/* Reviews */}
         
       <Reviews/>
-  {/* ///achievements */}
-  <Achievments/>
-
-
-          
+     {/* Contact */}
+     <Contact/>
+          {/* projects */}
+          <ProjectPage/>
+          {/* donate */}
+          <Donate/>
     </main>
   )
 }

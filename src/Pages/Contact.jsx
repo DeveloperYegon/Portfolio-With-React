@@ -14,6 +14,7 @@ function Contact() {
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const [errorMessages, setErrorMessages] = useState('');
   const [countries, setCountries] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -26,6 +27,7 @@ function Contact() {
   }, []);
 
   const onSubmit = (data) => {
+    setIsLoading(true);
     axios.post('http://localhost:3002/requests', data)
       .then((response) => {
         if (response.status === 200) {
@@ -40,38 +42,41 @@ function Contact() {
       .catch((err) => {
         console.error(err);
         setErrorMessages("Submission failed. Please try again.");
-      });
+      })
+      .finally(() => setIsLoading(false));
+      
   };
 
   return (
-    <div className='h-full pt-5 bg-[#fff]'>
+    <main className='text-[#fff] h-full rounded-xl shadow-lg shadow-[#7a5d4c] p-10  bg-[#46567C]  py-3 md:mx-20 m-4 '>
+        <h3 className='text-center text-4xl py-3'>Leave A Comment</h3>
+        <hr className='bg-[#ED7D3B] w-[50%] h-1 m-auto'/>
 
-      <div className='md:grid gap-5 grid-cols-2 md:m-10 m-5'>
+      <div className='md:grid gap-5 grid-cols-2 md:m-5 '>
         <div className='hidden md:flex flex-col bg-[#182B5C] text-[#fff] items-center rounded-[10px] h-full md:p-20'>
-          <h2 className='flex'>Share your feedback</h2>
+          <h2 className='flex text-4xl'>Share your feedback</h2>
           <hr className='m-4 h-1' />
-          <p>
+          <p className=''>
             "Feedback is the breakfast of champions, the compass that guides us to improvement and the mirror that reflects our potential for greatness."
           </p>
-          <p> <strong><i>--ChatGPT--</i></strong></p>
+          <p className='font-bold '> --ChatGPT--</p>
         </div>
 
-        <div className='border p-5 bg-[#182B5C] text-[#fff] rounded-[10px] h-full'>
+        <div className=' p-5 bg-[#182B5C] text-[#fff] rounded-[10px] h-full'>
           {errorMessages && (
             <div id="authmessage" style={{ color: 'red' }}>
               {errorMessages}
             </div>
           )}
 
-          <h3 className='text-center mt-10 text-[#ED7D3B] text-xl'>Get in Touch</h3>
-          <hr className='m-4' />
+          <h3 className='text-center  text-[#fff] text-4xl py-4'>Get in Touch</h3>
+          <hr className='m-auto bg-[#ED7D3B] w-[50%] h-1 ' />
 
           <form className='flex flex-col' noValidate onSubmit={handleSubmit(onSubmit)}>
-            <div className='w-full flex justify-around flex-col items-center border border-slate-200 m-1 p-2'>
-              <div className='flex flex-row gap-2 items-center'>
-                <label className='pt-2' htmlFor="contactname">Name:</label>
+             
+                <label className='py-3 font-bold' htmlFor="contactname">Name:</label>
                 <input
-                  className="border border-slate-700 p-2 bg-gray-200 text-black rounded-xl"
+                  className="border border-slate-700 p-3 bg-gray-200 text-black rounded-xl"
                   type="text"
                   placeholder='Enter Your Name'
                   id="name"
@@ -79,15 +84,11 @@ function Contact() {
                     required: "Name is required",
                   })}
                 />
-              </div>
               <p className='text-red-500 text-left text-[12px]'>{errors.name?.message}</p>
-            </div>
 
-            <div className='w-full flex justify-around flex-col items-center border border-slate-200 m-1 p-2'>
-              <div className='flex flex-row gap-2 items-center'>
-                <label className='pt-2' htmlFor="email">Email:</label>
+                <label className='py-3 font-bold' htmlFor="email">Email:</label>
                 <input
-                  className="border border-slate-700 bg-gray-200 p-2 text-black rounded-xl"
+                  className="border border-slate-700 p-3 bg-gray-200 p-2 text-black rounded-xl"
                   type="email"
                   placeholder='Enter Your Email'
                   id="email"
@@ -99,15 +100,11 @@ function Contact() {
                     }
                   })}
                 />
-              </div>
               <p className='text-red-500 text-left text-[12px]'>{errors.email?.message}</p>
-            </div>
-            <div className=' w-full flex justify-around md:flex-col items-center border border-slate-200 m-1 p-2'>
-            <div className='flex flex-row gap-2 items-center'>
-              <label className='pt-2' htmlFor="country">Country:</label>
+              <label className='py-3 font-bold' htmlFor="country">Country:</label>
               <select
                 name="country"
-                className='border border-slate-700 bg-gray-200 p-2 text-black rounded-xl'
+                className='border border-slate-700 bg-gray-200 p-3 text-black rounded-xl'
                 id="country"
                 {...register("country", {
                   required: "Country is required",
@@ -120,16 +117,12 @@ function Contact() {
                   </option>
                 ))}
               </select>
-              </div>  
 
               <p className='text-red-500 text-left text-[12px]'>{errors.country?.message}</p>
-            </div>
 
-             <div className='w-full flex justify-around flex-col md:items-center border border-slate-200 m-1 p-2'>
-            <div className='flex flex-row gap-2 items-center'>
-              <label className='pt-2' htmlFor="message">Message:</label>
+              <label className='py-3 font-bold' htmlFor="message">Message:</label>
               <textarea
-                className="border border-slate-700 bg-gray-200 text-black p-2 rounded-[10px]"
+                className="border border-slate-700 bg-gray-200 text-black p-3 rounded-[10px]"
                 name="message"
                 placeholder='Type Your Message Here.'
                 id="message"
@@ -137,38 +130,16 @@ function Contact() {
                   required: "Message is required",
                 })}
               />
-              </div>  
 
               <p className='text-red-500 text-left text-[12px]'>{errors.message?.message}</p>
-            </div>
 
-            <div className='flex justify-around items-center'>
-              <button className='border border-slate-950 rounded-xl p-2 mt-4 bg-[#ED7D3B] uppercase text-xl m-auto' type='submit'>Submit</button>
-            </div>
+              <input value={isLoading?'Submitting...' : "Submit" }  className=' rounded-xl p-2 mt-4 font-bold bg-[#ED7D3B] ' type='submit'/>
           </form>
         </div>
       </div>
 
-      <div className='md:grid gap-5 grid-cols-2 md:m-10 m-5'>
-        <div className='bg-[#182b5c] text-[#fff] p-4 rounded-xl'>
-          <h3 className='text-center m-2 text-[#ED7D3B] text-xl'>Hotline Inquiry</h3>
-          <hr className='m-auto w-[80%]' />
-          <Link to='tel:+254-712-269-086'><p className='flex items-center gap-2 p-2 border m-5'><IoCall /> &nbsp; 0712269086</p></Link>
-          <Link to='mailto:gideonyegon404@gmail.com'><p className='text-center flex items-center gap-2 p-2 border m-5'><MdEmail />gideonyegon404@gmail.com</p></Link>
-        </div>
-
-        <div className='bg-[#182b5c] pt-4 my-4 rounded-xl h-full'>
-          <h3 className='text-center m-2 text-xl text-[#ED7D3B]'>Join our Community</h3>
-          <hr className='w-[80%] m-auto' />
-          <ul className='p-3 flex flex-col items-center md:flex-row justify-around'>
-            <li className='p-3 border border-slate-100 m-3 text-2xl'><Link to="https://www.linkedin.com/in/developer-yegon/"><ImLinkedin className='text-[#ED7D3B]' /></Link> </li>
-            <li className='p-3 border border-slate-100 m-3 text-2xl'><Link to=""><FaSquareInstagram className='text-[#ED7D3B]' /></Link></li>
-            <li className='p-3 border border-slate-100 m-3 text-2xl'><Link to=""><FaTwitterSquare className='text-[#ED7D3B]' /></Link></li>
-            <li className='p-3 border border-slate-100 m-3 text-2xl'><Link to=""><FaFacebookSquare className='text-[#ED7D3B]' /></Link></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+     
+    </main>
   );
 }
 export default Contact;

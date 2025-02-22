@@ -4,28 +4,22 @@ import projects  from '../assets/projects'
 
 function ProjectPage() {
   return (
-    <div className='bg-[#fff] text-[#182B5C] mt-5 h-full'>
+    <main className='text-[#fff] h-full my-10 rounded-xl shadow-lg shadow-[#7a5d4c] p-10  bg-[#46567C]  py-3 md:mx-20 m-4'>
 
-      <h1 className='text-center text-xl p-5 '>Projects</h1>
-      <hr className='m-auto w-[80%] h-1 bg-black' />
+      <h1 className='text-center text-4xl py-4  '>Projects</h1>
+      <hr className='m-auto w-[50%] h-1 bg-[#ED7D3B]' />
 
-
-      <div className='h-full md:m-10 m-5 grid md:grid-cols-4 gap-4'>
-      {projects.map((project) => {
-        return <Item 
-        key={project.id} 
-        id={project.id}
-        image={project.image} 
-        name={project.name} 
-        description={project.description} 
-        type="project" 
-        />
-      })}
-      </div>
-
-
-
+    <div className='h-full py-4 text-white grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+      <div className='border p-3'>Llama 2 70B Finetune</div>
+      <div  className='border p-3'>Gemini Clone</div>
+      <div  className='border p-3'>Rai Alliance</div>
+      <div  className='border p-3'>Tilt Technologies</div>
     </div>
+      
+
+
+
+    </main>
   )
 }
 

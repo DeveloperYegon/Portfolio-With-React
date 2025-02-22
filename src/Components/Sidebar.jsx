@@ -9,7 +9,7 @@ import { CiLogin } from "react-icons/ci";
 
 function Sidebar() {
   return (
-    <div className='mt-3  py-10 bg-[#fff] rounded text-[#182B5C] h-full'>
+    <main className='mt-3  py-10 bg-[#fff] rounded text-[#182B5C] h-full'>
       <ul className='text-center text-xl'>
       <li className='py-2 hover:bg-white hover:text-[#ED7D3B]'>
             <Link to="/">Home</Link>
@@ -47,7 +47,7 @@ function Sidebar() {
           <li className='border rounded'><FaFacebookSquare className=' hover:bg-[#ED7D3B]'/></li>
         </ul>
     
-      </div>
+      </main>
   )
 }
 

@@ -15,12 +15,12 @@ const BuyMeCoffee = () => {
 
   return (
 
-    <main className='h-full m-4 md:m-10 bg-[#182B5C] p-5 md:p-10'>
-      <h2 className='text-center text-white text-xl m-3'>Buy Me Coffee</h2>
+    <main className='text-[#fff] h-full rounded-xl shadow-lg shadow-[#7a5d4c] p-10  bg-[#46567C]  py-3 md:mx-20 m-4'>
+      <h2 className='text-center text-white text-4xl py-4'>Buy Me Coffee</h2>
       <hr className='w-[50%] m-auto h-1  bg-white'/>
 
-    <form className='border p-5 m-4 border-slate-200 rounded-xl flex flex-col' onSubmit={handleSubmit}>
-      <label className='text-white md:text-xl mt-2' htmlFor="phone">Phone Number:</label>
+    <form className= '  md:p-4 rounded flex flex-col w-2/3 m-auto' onSubmit={handleSubmit}>
+      <label className='py-4 text-white font-bold' htmlFor="phone">Phone Number:</label>
       <input
         type="text"
         value={phone}
@@ -28,7 +28,7 @@ const BuyMeCoffee = () => {
         onChange={(e) => setPhone(e.target.value)}
         placeholder="Enter Phone Number"
       />
-      <label className='text-white md:text-xl mt-2' htmlFor="amount">Amount:</label>
+      <label className='py-4 text-white font-bold' htmlFor="amount">Amount:</label>
       <input
         type="number"
         value={amount}

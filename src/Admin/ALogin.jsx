@@ -1,69 +1,100 @@
 import React,{useState} from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
+import { auth, signInWithEmailAndPassword,sendPasswordResetEmail } from "../firebase";
+import { useForm } from 'react-hook-form';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 function ALogin() {
+
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+  const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState('');
+const navigate = useNavigate();
   const [errorMessages, setErrorMessages] = useState('');
 
-  const [logins, setLogins] = React.useState({
-    email: '',
-    password: ''
-  });
-  const navigate = useNavigate(); // Hook to handle navigation
- 
-const handleChange = (e) => {
-  setLogins({ ...logins, [e.target.name]: e.target.value });
-}
-const token = localStorage.getItem('token'); // Or wherever you store the token
+  const notifySuccess = () => toast.success("Logged In Successfully!");
+  const notifyError = (message) => toast.error(message);
 
 
-const handleSubmit =  (e) => {
 
-  e.preventDefault();
-  axios.post('http://localhost:3002/login', logins)
-  .then((response) =>{
-    console.log(response);
-    setLogins({ email: '', password: '' }); // Reset form fields
-    localStorage.setItem('token', response.data.token); // Store token after successful login
-    setTimeout(() => {
-     navigate('/dashboard');
-    }, 2000);
-    //console.log(response.data);
-    
-    if(response.status === 200){
-      document.getElementById('authmessage').textContent = 'Login successful';
-  } 
+const onSubmit = async (data) => {
+  setIsLoading(true);
+  const { email, password } = data;
 
-  })
-
-  .catch((err) => console.log(err));
-
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    notifySuccess();
+    reset();
+    setTimeout(() => navigate('/blogs'), 2000);
+  } catch (error) {
+    setErrorMessages("Invalid Email/Password");
+    notifyError("Invalid Email/Password");
+    setIsLoading(false);
+  }
 };
+ 
 
   return (
 
-    <main className='md:m-5 m-2 bg-[#182B5C] p-5 h-[100vh] '>
+    <main className=' bg-[#182B5C] p-5 h-screen '>
         
-    <section className='border m-5 rounded-xl bg-white border-slate-950 h-full p-4'>
+    <section className=' border-slate-950  shadow-lg shadow-[#7a5d4c] md:w-2/3 m-auto  bg-[#46567C] rounded-lg h-full p-4 border'>
     <p className='text-center text-black p-2' id='authmessage'></p>
 
-        < p className='text-center text-3xl p-4'>Login</p>
-        <hr className='h-1 bg-black w-[50%] m-auto'/>
+        < p className='text-center text-white text-4xl p-4'>Login</p>
+        <hr className='h-1 bg-[#ED7D3B] w-[50%] m-auto'/>
 
             {/*Admin login from */}
-        <form className='border border-slate-950 m-4 p-4 rounded flex flex-col' onSubmit={handleSubmit} >
-              <label className='pt-4' htmlFor="email">Email:</label>
-              <input className='p-2 border border-slate-600 rounded-xl' type="email" id="email" value={logins.email} name="email" required onChange={handleChange} />
+        <form className=' m-4 p-4 rounded flex flex-col' onSubmit={handleSubmit(onSubmit)} >
+              <label className='py-4 text-white font-bold' htmlFor="email">Email:</label>
+              <input 
+              className='p-3 border border-slate-600 rounded-xl' 
+              placeholder='Enter your email'
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                    message: "Invalid email address"
+                }
+            })}
+              type="email"
+              id="email" 
+              name="email" 
+              required 
               
-              <label className='pt-4' htmlFor="password">Password:</label>
-              <input className='p-2 border border-slate-600 rounded-xl 'type="password" id="password" value={logins.password}name="password" required onChange={handleChange} />
+              />
+              
+              <label className='py-4 text-white font-bold' htmlFor="password">Password:</label>
+              <input className='p-3 border border-slate-600 rounded-xl 'type="password"
+               {...register("password", {
+                required: "Password is required",
+                minLength: { value: 6, message: "Password must be at least 6 characters long" }
+            })}
+              id="password"
+              placeholder='Enter Password'
+              name="password" required 
+              />
 
-              <input className='bg-[#ED7D3B] p-3 rounded-xl m-3' type="submit" value="Submit" />
+              <input className='bg-[#ED7D3B] p-3 rounded-xl my-4' 
+               value={isLoading ? 'Submitting...' : 'Submit'}
+               disabled={isLoading}
+               type="submit" />
           </form>
 
     
     </section>
+    <ToastContainer
+        autoClose={3000}
+        position="top-center"
+        hideProgressBar={false}
+        closeOnClick
+        draggable
+        pauseOnHover
+    />
     </main>
   )
 }

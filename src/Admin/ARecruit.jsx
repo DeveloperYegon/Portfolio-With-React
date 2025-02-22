@@ -1,113 +1,111 @@
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { auth, db, createUserWithEmailAndPassword, setDoc, doc } from "../firebase";
+import { useNavigate,Link } from 'react-router-dom';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function ARecruit() {
-  const navigate = useNavigate();
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      navigate('/login'); // Redirect if no token is found
-      return;
-    }
+  // useEffect(() => {
+  //   const token = localStorage.getItem('token');
+  //   if (!token) {
+  //     navigate('/login'); // Redirect if no token is found
+  //     return;
+  //   }
 
-    // Make an authenticated request to verify the token
-    axios.get('http://localhost:3003/protected-route', {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    })
-    .then(response => {
-      // Handle success response
-      console.log('Access granted to protected route:', response.data);
-    })
-    .catch(error => {
-      // If there’s an error, remove token and redirect to login
-      console.error('Authentication failed:', error);
-      localStorage.removeItem('token');
-      navigate('/login');
-    });
-  }, [navigate]);
+  //   // Make an authenticated request to verify the token
+  //   axios.get('http://localhost:3003/protected-route', {
+  //     headers: {
+  //       'Authorization': `Bearer ${token}`
+  //     }
+  //   })
+  //   .then(response => {
+  //     // Handle success response
+  //     console.log('Access granted to protected route:', response.data);
+  //   })
+  //   .catch(error => {
+  //     // If there’s an error, remove token and redirect to login
+  //     console.error('Authentication failed:', error);
+  //     localStorage.removeItem('token');
+  //     navigate('/login');
+  //   });
+  // }, [navigate]);
   
   // Toast notification
-  const notify = () => toast("Submitted Successfully!");
-
+  
   // Destructure the form methods and states
   const { register, handleSubmit, formState: { errors }, reset } = useForm(); 
-  
+  const navigate = useNavigate();
   const [errorMessages, setErrorMessages] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  
+  const notify = () => toast("Submitted Successfully!");
+  
 
   // Toggle password visibility
   const handleToggle = () => {
     setShowPassword(!showPassword);
   };
 
-  const [logins, setLogins] = useState({
-    name: '',
-    email: '',
-    password: ''
-  });
+  
 
-  const onSubmit = (data) => {
-    axios.post('http://localhost:3002/register', data)
-      .then((response) => {
-        if (response.status === 201) {
-          notify(); // Call notify to show toast
-          setErrorMessages(""); // Clear error messages
-          reset(); // Reset form fields
-          setTimeout(() => {
-            navigate('/'); // Redirect after successful submission
-          }, 2000);
-        } else {
-          setErrorMessages("Registration failed. Please try again.");
-        }
-      })
-      .catch((err) => {
-        setErrorMessages(err.response?.data?.message || 'User already exists');
-      });
-  };
+  const onSubmit =async (data) => {
+    setIsLoading(true); // Set loading state to true
+    const { name,email, password } = data; // Extract email and password from form data
+try {
+  const userCredential = await createUserWithEmailAndPassword(auth,name, email, password);
+  const user = userCredential.user;
+  notifySuccess(); // Show success toast
+  reset(); // Reset the form
+  setErrorMessages(''); // Clear any previous errors
+  setTimeout(() => {
+    navigate('/login'); // Redirect to login page after a short delay
+  }, 2000);
+
+  // Save user data to Firestore
+  await setDoc(doc(db, "users", user.uid), {
+    id: user.uid,
+    name,
+    email,
+    createdAt: Date.now()
+  });
+ 
+} catch (error) {
+  setErrorMessages(err.message); // Show error message
+  setIsLoading(false); // Stop loading indicator
+}};
 
   return (
-    <main className='md:m-5 m-2 bg-[#182B5C] p-2 md:p-5'>
-      <section className='border md:m-5 rounded-xl bg-white border-slate-950 h-full md:p-4'>
+    <main className='bg-[#182B5C] p-5 h-screen'>
+      <section className='  border-slate-950  shadow-lg shadow-[#7a5d4c] md:w-2/3 m-auto  bg-[#46567C] rounded-lg h-full p-4 border'>
         {errorMessages && (
           <div id="authmessage" className='text-center' style={{ color: 'red' }}>
             {errorMessages}
           </div>
         )}
-        <p className='text-center text-[#ED7D3B] p-3 text-2xl'>Register Admin</p>
-        <hr className='h-1 bg-black w-6m-auto' />
+        <p className='text-center text-white p-3 text-4xl'>Register Admin</p>
+        <hr className='h-1 bg-[#ED7D3B] w-[50%] m-auto' />
 
         {/* Admin registration form */}
-        <form className='border border-slate-950 md:m-4 m-1 md:p-4 rounded flex flex-col' onSubmit={handleSubmit(onSubmit)} noValidate>
-          <div className='w-full flex justify-around flex-col items-center border border-slate-200 m-1'>
-            <div className='flex flex-row gap-2 items-center'>
-              <label className='p-4' htmlFor="name">Name:</label>
+        <form className=' m-4 p-4 rounded flex flex-col' onSubmit={handleSubmit(onSubmit)} noValidate>
+              <label className='py-4 text-white font-bold' htmlFor="name">Name:</label>
               <input
                 className='p-2 border border-slate-600 rounded-xl'
                 type="text"
                 id="name"
                 value={logins.name}
                 {...register("name", { required: "Name is required" })}
-                onChange={(e) => setLogins({ ...logins, name: e.target.value })}
               />
-            </div>
             <p className='text-red-500 text-left text-[12px]'>{errors.name?.message}</p>
-          </div>
 
-          <div className='w-full flex justify-around flex-col items-center border border-slate-200 m-1'>
-            <div className='flex flex-row gap-2 items-center'>
-              <label className='p-4' htmlFor="email">Email:</label>
+              <label className='py-4 text-white font-bold' htmlFor="email">Email:</label>
               <input
                 className='p-2 border border-slate-600 rounded-xl'
                 type="email"
                 id="email"
-                value={logins.email}
                 {...register("email", {
                   required: "Email is required",
                   pattern: {
@@ -115,20 +113,14 @@ function ARecruit() {
                     message: "Invalid email address"
                   }
                 })}
-                onChange={(e) => setLogins({ ...logins, email: e.target.value })}
               />
-            </div>
             <p className='text-red-500 text-left text-[12px]'>{errors.email?.message}</p>
-          </div>
 
-          <div className='w-full flex justify-around flex-col items-center border border-slate-200 m-1'>
-            <div className='flex flex-row gap-1 items-center'>
-              <label className='py-4' htmlFor="password">Password:</label>
+              <label className='py-4 text-white font-bold' htmlFor="password">Password:</label>
               <input
                 className='p-2 border border-slate-600 rounded-xl'
                 type={showPassword ? 'text' : 'password'}
                 id="password"
-                value={logins.password}
                 {...register("password", {
                   required: "Password is required",
                   minLength: {
@@ -136,18 +128,13 @@ function ARecruit() {
                     message: "Password must be at least 6 characters long"
                   }
                 })}
-                onChange={(e) => setLogins({ ...logins, password: e.target.value })}
               />
               <button type="button" onClick={handleToggle} id="togglePassword">
-                {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
+                {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}Show Password
               </button>
-            </div>
             <p className='text-red-500 text-left text-[12px]'>{errors.password?.message}</p>
-          </div>
 
-          <div className='flex justify-around items-center'>
             <input className='bg-[#ED7D3B] p-3 rounded-xl m-3' type="submit" value="Submit" />
-          </div>
         </form>
       </section>
 
