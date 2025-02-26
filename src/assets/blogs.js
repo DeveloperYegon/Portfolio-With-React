@@ -1,5 +1,5 @@
 
-import webtools from './web tools.jpeg';
+import webtools from './GideonYegon.jpg';
 
 const blogs=[
     {

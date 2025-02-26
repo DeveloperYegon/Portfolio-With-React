@@ -1,13 +1,12 @@
 import React from 'react'
 import blogs from '../assets/blogs.js'
-import projects from '../assets/projects.js';
 import { createContext } from 'react'
 
 export const BlogContext = createContext(null);
 
 const BlogContextProvider =(props)=>{
 
-    const contextValue = { blogs, projects };
+    const contextValue = { blogs};
     //console.log(contextValue);
 
   return (

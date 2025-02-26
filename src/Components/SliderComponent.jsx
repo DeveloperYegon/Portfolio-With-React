@@ -3,7 +3,6 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import educ from '../assets/KCA University.png';
-import Roonie from '../assets/Roonie.png';
 
 const SliderComponent = () => {
   const settings = {

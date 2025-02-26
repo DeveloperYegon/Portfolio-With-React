@@ -1,6 +1,4 @@
 import React from 'react'
-import Item from '../Components/Item'
-import projects  from '../assets/projects'
 
 function ProjectPage() {
   return (
