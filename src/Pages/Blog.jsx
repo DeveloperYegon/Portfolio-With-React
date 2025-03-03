@@ -10,9 +10,6 @@ function Blog() {
     const {blogId}= useParams();
     // const blogId= params.blogId
     const blog = blogs.find((item) => item.id === Number((blogId)));
-
-   
-    
   return (
     <div>
         <BlogDisplay blog={blog} />

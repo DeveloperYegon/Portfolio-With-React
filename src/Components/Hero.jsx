@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import myProfile from '../assets/GideonYegon.jpg'
 import { IoCall } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
@@ -6,11 +6,24 @@ import {Link} from 'react-router-dom'
 import { ImLinkedin } from "react-icons/im";
 import { FaGithub } from "react-icons/fa";
 import { FaMedium } from "react-icons/fa6";
+import Modal from "../Pages/Modal"
+
 
 
 
 
 function Hero() {
+
+    const [showModal, setShowModal] = useState(false);
+  
+    const openModal = () => {
+      setShowModal(true);
+    };
+  
+    const closeModal = () => {
+      setShowModal(false);
+    };
+
     const getGreeting = () => {
         const now = new Date();
         const hour = now.getHours();
@@ -52,12 +65,17 @@ function Hero() {
                     I value being collaborative, inclusive, authentic and having fun  when doing it.
                     </p>
               </p>
-              <div className='flex  justify-around'>
-                
-                 <ul className='flex md:flex-row flex-col  items-center gap-2 p-2 m-5'>
-                 <li ><p className='flex bg-[#ED7d3b] items-center gap-2 p-2 border m-5'> Download CV</p>
-                 </li>
-                  <li><Link to='tel:+254-712-269-086'><p className='flex items-center gap-2 p-2 border m-5'><IoCall /> &nbsp; 0712269086</p></Link>
+              <div className='flex   items-center justify-center'>
+                  <p className='bg-[#ED7d3b] p-2 m-5 rounded-lg'>Download CV`</p>
+                 
+                 <div className='flex flex-col items-center'>
+                 <button className='bg-[#ED7d3b] p-2 m-5 rounded-lg' onClick={openModal}>Contact Me</button>
+                 {/* {showModal && <Modal onClose={closeModal} />} */}
+                 <Modal show={showModal} onClose={closeModal}>
+                    <p className='text-center text-black font-bold py-5'>Contact me on any of the platforms below</p>
+                    <ul className='flex md:flex-row flex-col  text-black items-center gap-2 p-2 m-5'>
+                 
+                  <li><Link to='tel:+254-712-269-086'><p className='flex items-center gap-2 p-2 border '><IoCall /> &nbsp; 0712269086</p></Link>
                  </li>
                   <li>  <Link to='mailto:gideonyegon404@gmail.com'><p className='text-center flex items-center gap-2 p-2 border m-5'><MdEmail />gideonyegon404@gmail.com</p></Link></li>
                   <li>  <Link to='mailto:gideonyegon404@gmail.com'><p className='text-center flex items-center gap-2 p-2 border m-5'><ImLinkedin/></p></Link></li>
@@ -66,6 +84,9 @@ function Hero() {
 
                   <li> </li>
                  </ul>
+                 </Modal>
+
+                 </div>
               </div>
           </div>
    </main>

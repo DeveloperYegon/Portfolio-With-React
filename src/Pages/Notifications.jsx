@@ -7,6 +7,7 @@ import axios from 'axios';
 
 function Notifications() {
 
+  const [data, setData] = React.useState([]);
 
   const [logins, setLogins] = React.useState({
     email: '',
@@ -16,6 +17,7 @@ function Notifications() {
 
 const handleChange = (e) => {
   setLogins({ ...logins, [e.target.name]: [e.target.value] });
+  const [showModal, setShowModal] = useState(false);
 
 
 }
@@ -26,7 +28,6 @@ const handleSubmit = (e) => {
 
 }
 
-  const [data, setData] = React.useState([]);
 
   useEffect(() => {
     fetch('http://localhost:3002/requests')
@@ -36,7 +37,6 @@ const handleSubmit = (e) => {
   },[])
 
 
-  const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
     setShowModal(true);
