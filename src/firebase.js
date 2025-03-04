@@ -8,7 +8,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, se
 const firebaseConfig = {
   apiKey:import.meta.env.VITE_FIREBASE_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_DOMAIN,
-  projectId:"port-18143",
+  projectId:import.meta.env.VITE_FIREBASE_PROJECT_ID,
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_FIREBASE_SENDER_ID,
   appId: import.meta.env.VITE_MESSAGING_APP_ID,
@@ -17,8 +17,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const db = getFirestore(app);
-const auth = getAuth(app);
+ const analytics = getAnalytics(app);
+ const db = getFirestore(app);
+ const auth = getAuth(app);
 
-export { db,auth, collection, addDoc,analytics, doc,where, query,setDoc, orderBy, onSnapshot,createUserWithEmailAndPassword,sendPasswordResetEmail, signInWithEmailAndPassword, signOut };
+export   { db, app , auth, collection, addDoc,analytics, doc,where, query,setDoc, orderBy, onSnapshot,createUserWithEmailAndPassword,sendPasswordResetEmail, signInWithEmailAndPassword, signOut };

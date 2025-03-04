@@ -16,37 +16,37 @@ function Skills() {
             <h3 className='text-center text-4xl py-3'>Skills and Expertise</h3>
             <hr className='bg-[#ED7D3B] w-[50%] h-1 m-auto'/>
 
-            <div className=' m-10'>
-            <div className='border flex gap-4 bg-white text-black my-3 p-5 items-center '>
+            <div className=' m-5'>
+            <div className='border flex  flex-col md:flex-row gap-4 bg-white text-black my-3 p-5 items-center '>
             <VscTools className='text-[#ED7D3B] text-4xl' />
-              <span className='font-bold'>MERN Web Development</span> - ReactJs,ExpressJs, NodeJs, API Integrations, Tailwind CSS
+              <span className='font-bold text-center'>MERN Web Development</span> - ReactJs,ExpressJs, NodeJs, API Integrations, Tailwind CSS
               </div>
-              <div className='my-3 flex gap-4 border p-5 items-center text-black bg-white'>
+              <div className='my-3 flex flex-col md:flex-row gap-4 border p-5 items-center text-black bg-white'>
               <TiVendorAndroid className='text-[#ED7D3B] text-4xl' />
-              <span className='font-bold'>Android Development</span> - Java, Android Studio
+              <span className='font-bold text-center'>Android Development</span> - Java, Android Studio
               </div>
               
 
-            <div className='bg-white flex  gap-4 text-black my-3 border  p-5 items-center '>
+            <div className='bg-white flex flex-col md:flex-row  gap-4 text-black my-3 border  p-5 items-center '>
             <FaPython  className='text-[#ED7D3B] text-4xl'/>
-            <span className='font-bold'> Artificial Intellince and Machine Learning </span> - Python, Tensorflow, Keras, Scikit-learn
+            <span className='font-bold text-center'> Artificial Intellince and Machine Learning </span> - Python, Tensorflow, Keras, Scikit-learn
               </div>
 
 
             
-            <div className=' flex  gap-4 border p-5 items-center my-3 bg-white text-black'>
+            <div className=' flex flex-col md:flex-row  gap-4 border p-5 items-center my-3 bg-white text-black'>
             <FaDocker className='text-[#ED7D3B] text-4xl'/>
-            <span className='font-bold'>
+            <span className='font-bold text-center'>
               Containerization and Virtual Machines</span> - Docker </div>
 
             
-            <div className=' flex gap-4 border p-5 items-center my-3 bg-white text-black'>< FaGitAlt  className='text-[#ED7D3B] text-4xl'  />
-            <span className='font-bold'> Version Control and CI/CD</span>- Github, Git, Github Actions</div>
+            <div className=' flex flex-col md:flex-row gap-4 border p-5 items-center my-3 bg-white text-black'>< FaGitAlt  className='text-[#ED7D3B] text-4xl'  />
+            <span className='font-bold text-center'> Version Control and CI/CD</span>- Github, Git, Github Actions</div>
             
-            <div className='bg-white flex gap-4 text-black my-3 border p-5 items-center'><FaDatabase   className='text-[#ED7D3B] text-4xl'  />
-            <span className='font-bold'> Database Management </span>- MySQL, MongoDB, Cloud fireStore</div>
-            <div className=' flex gap-4 border p-5 items-center my-3 bg-white text-black'>< FcLinux className='text-[#ED7D3B] text-4xl'/>
-            <span className='font-bold'> Unix  Operating System </span>-Kali linux and Ubuntu</div>
+            <div className='bg-white flex flex-col md:flex-row gap-4 text-black my-3 border p-5 items-center'><FaDatabase   className='text-[#ED7D3B] text-4xl'  />
+            <span className='font-bold text-center'> Database Management </span>- MySQL, MongoDB, Cloud fireStore</div>
+            <div className=' flex flex-col md:flex-row gap-4 border p-5 items-center my-3 bg-white text-black'>< FcLinux className='text-[#ED7D3B] text-4xl'/>
+            <span className='font-bold text-center'> Unix  Operating System </span>-Kali linux and Ubuntu</div>
             </div>
             
    </main>

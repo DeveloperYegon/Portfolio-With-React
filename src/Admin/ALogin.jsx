@@ -1,21 +1,19 @@
 import React,{useState} from 'react'
-import axios from 'axios'
-import { useNavigate,Link } from 'react-router-dom';
-import { auth, signInWithEmailAndPassword,sendPasswordResetEmail } from "../firebase";
+import { useNavigate} from 'react-router-dom';
+import { auth, signInWithEmailAndPassword,sendPasswordResetEmail} from "../firebase";
 import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
+  
 
 function ALogin() {
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState('');
-const navigate = useNavigate();
+  const navigate = useNavigate();
   const [errorMessages, setErrorMessages] = useState('');
-
   const notifySuccess = () => toast.success("Logged In Successfully!");
   const notifyError = (message) => toast.error(message);
 
@@ -34,6 +32,21 @@ const onSubmit = async (data) => {
     setErrorMessages("Invalid Email/Password");
     notifyError("Invalid Email/Password");
     setIsLoading(false);
+  }
+};
+
+ // Function to handle password reset
+ const handlePasswordReset = async () => {
+  if (!email) {
+      toast.error("Please enter your email");
+      return;
+  }
+  try {
+      await sendPasswordResetEmail(auth, email);
+      toast.success("Password reset email sent!");
+  } catch (error) {
+      console.error(error);
+      toast.error("Failed to send password reset email. Please try again.");
   }
 };
  
@@ -63,12 +76,11 @@ const onSubmit = async (data) => {
             })}
               type="email"
               id="email" 
-              name="email" 
-              required 
-              
+              onChange={(e)=>setEmail(e.target.value)}
               />
               
               <label className='py-4 text-white font-bold' htmlFor="password">Password:</label>
+
               <input className='p-3 border border-slate-600 rounded-xl 'type="password"
                {...register("password", {
                 required: "Password is required",
@@ -76,7 +88,6 @@ const onSubmit = async (data) => {
             })}
               id="password"
               placeholder='Enter Password'
-              name="password" required 
               />
 
               <input className='bg-[#ED7D3B] p-3 rounded-xl my-4' 
@@ -84,7 +95,9 @@ const onSubmit = async (data) => {
                disabled={isLoading}
                type="submit" />
           </form>
-
+            <p className='text-center mt-3'>
+              <span onClick={handlePasswordReset} className='text-[#fff] p-2 font-bold cursor-pointer rounded-lg border'>Reset Password</span>
+            </p>
     
     </section>
     <ToastContainer

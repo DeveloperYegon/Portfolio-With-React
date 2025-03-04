@@ -23,7 +23,7 @@ const SliderComponent = () => {
   };
 
   return (
-    <div className="slider-container" style={{ width: '80%', margin: '0 auto' }}>
+    <div className="slider-container" style={{ width: '100%', margin: '0 auto' }}>
       <Slider {...settings}>
         <div>
           <img src={educ1} alt="Slide 1" />

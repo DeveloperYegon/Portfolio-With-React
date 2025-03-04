@@ -8,7 +8,7 @@ function Reviews() {
       
                   <h3 className='text-center font-bold text-4xl py-4'>Educational Background</h3>
                   <hr className='bg-[#ED7D3B] h-1 w-[50%] m-auto'/>
-                  <div className='h-full p-10'>
+                  <div className='h-full p-5'>
                     <SliderComponent/>
                   </div>
           
