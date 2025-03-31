@@ -35,20 +35,23 @@ function Footer() {
                     
                      <ul className='flex flex-col items-center md:flex-row gap-2 p-2 m-5'>
                      
-                      <li><Link to='tel:+254-712-269-086'><p className='flex items-center gap-2 p-2 border m-5'><IoCall /> &nbsp; 0712269086</p></Link>
+                      <li><Link to='tel:+254-712-269-086'><p className='flex items-center rounded-xl  gap-2 p-3 border m-5'><IoCall /> &nbsp; 0712269086</p></Link>
                      </li>
-                      <li>  <Link to='mailto:gideonyegon404@gmail.com'><p className='text-center flex items-center gap-2 p-2 border m-5'><MdEmail />gideonyegon404@gmail.com</p></Link></li>
-                      <li>  <Link to='mailto:gideonyegon404@gmail.com'><p className='text-center flex items-center gap-2 p-2 border m-5'><ImLinkedin/></p></Link></li>
-                      <li>  <Link to='https://github.com/DeveloperYegon/'><p className='text-center flex items-center gap-2 p-2 border m-5'><FaGithub/></p></Link></li>
-                      <li>  <Link to='https://medium.com/@developeryegon'><p className='text-center flex items-center gap-2 p-2 border m-5'><FaMedium/></p></Link></li>
+
+                      <li>  <Link to='mailto:gideonyegon404@gmail.com'><p className='text-center flex items-center gap-2 p-3 border rounded-xl m-5'><MdEmail />gideonyegon404@gmail.com</p></Link></li>
+                      <li>  <Link to='mailto:gideonyegon404@gmail.com'><p className='text-center flex items-center gap-2 rounded-xl p-3 border m-5'><ImLinkedin/></p></Link></li>
+                      <li>  <Link to='https://github.com/DeveloperYegon/'><p className='text-center flex items-center rounded-xl gap-2 p-3 border m-5'><FaGithub/></p></Link></li>
+
+
+                      <li>  <Link to='https://medium.com/@developeryegon'><p className='text-center flex items-center gap-2 rounded-xl p-3 border m-5'><FaMedium/></p></Link></li>
     
                       <li> <Link to='/login'>
-                      <p className='text-center flex items-center gap-2 p-2 border m-5'>
+                      <p className='text-center flex items-center rounded-xl gap-2 p-3 border m-5'>
                               Post A Blog
                         </p>
                          </Link></li>
                          <li> 
-                      <p className='text-center flex items-center gap-2 p-2 border m-5' onClick={handleSignOut}>
+                      <p className='text-center flex items-center rounded-xl gap-2 p-3 border m-5' onClick={handleSignOut}>
                               Logout
                         </p>
                          </li>
