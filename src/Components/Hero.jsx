@@ -80,15 +80,15 @@ function Hero() {
                     <p className='text-center text-[#ED7D3B] font-bold  text-2xl py-5'>Contact me on any of the platforms below</p>
                     <hr className='w-[50%] m-auto h-1  bg-black'/>
 
-                    <ul className='flex  border  text-black items-center gap-2 p-2 m-5'>
-                 
-                 
+                  <ul className='flex  border md:flex-row flex-col text-black items-center gap-2 p-2 m-5'>                 
                   <li>  <Link to='mailto:gideonyegon404@gmail.com'><p className='text-center flex items-center gap-2 p-2 border border-slate-950 rounded-lg m-5'><MdEmail />gideonyegon404@gmail.com</p></Link></li>
 
                   <li><Link to='tel:+254-712-269-086'><p className='text-center flex items-center gap-2 p-2 border border-slate-950 rounded-lg m-5'><IoCall />+254712269086</p></Link>
                   </li>
-                  <li>  <Link to='mailto:gideonyegon404@gmail.com'><p className='text-center flex items-center gap-2 p-2 border border-slate-950 rounded-lg m-5'><ImLinkedin/></p></Link></li>
+                  <li>  <Link to='https://linkedin.com/in/-gideon-yegon'><p className='text-center flex items-center gap-2 p-2 border border-slate-950 rounded-lg m-5'><ImLinkedin/></p></Link></li>
+
                   <li>  <Link to='https://github.com/DeveloperYegon/'><p className='text-center flex items-center gap-2 p-2 border border-slate-950 rounded-lg m-5'><FaGithub/></p></Link></li>
+
                   <li>  <Link to='https://medium.com/@developeryegon'><p className='text-center flex items-center gap-2 p-2 border border-slate-950 rounded-lg m-5'><FaMedium/></p></Link></li>
 
                   <li> </li>

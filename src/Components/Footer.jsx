@@ -31,7 +31,7 @@ function Footer() {
     <footer className='bg-[#182B5C] py-10 text-[#fff]'>
         <hr className='h-1 bg-[#fff] w-[50%] m-auto'/>
 
-      <div className='flex justify-around '>
+      <div className='flex flex-col md:flex-row items-center justify-around '>
                     
                      <ul className='flex flex-col items-center md:flex-row gap-2 p-2 m-5'>
                      
