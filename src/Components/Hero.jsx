@@ -50,20 +50,15 @@ function Hero() {
                 <p>{getGreeting()} {wavingHandEmoji}</p>
                 <p className=''>
                     <strong>Gideon Kipkorir Yegon here,</strong> <br />
-                    A  <strong>Software Engineer</strong> with 3+ years of interacting with software engineering tools.
-                    I have delved into building and development of softwares to enhace smooth business operations in the technology world. 
+
+                    A passionate and detail-oriented software developer with 4+ years experience expertised in the MERN stack and Android app development. With a strong foundation in frontend and backend technologies, I thrive in building scalable, user-friendly applications that enhance digital experiences. My expertise spans React, Node.js, Express, MongoDB, and TypeScript, alongside a deep understanding of UI/UX principles and responsive design.
+            <p className='py-4'>
+
+                    Beyond coding, I am committed to continuous learning and innovation, always exploring new technologies to stay ahead in the fast-evolving tech space. I enjoy collaborating with teams to solve complex problems, optimize performance, and create impactful digital solutions. Whether it's developing dynamic web applications or crafting intuitive mobile apps, I am dedicated to delivering excellence and pushing the boundaries of what technology can achieve.
+                   
+            </p>
                     </p>
-                    <p className=''>
-                    My greatest strength is collaborating and driving effectiveness across teams.
-                    I have talent for designing and developing systems to successfully launch technology products.
-                    </p>
-                    <p className=''>
-                    I am passionate about scraping innovations using technology products including web and mobile development.
-                    
-                    </p>
-                    <p className=''>
-                    I value being collaborative, inclusive, authentic and having fun  when doing it.
-                    </p>
+                   
               </p>
               <div className='flex   items-center justify-center'>
                   <p className='bg-[#ED7d3b] p-2 m-5 rounded-lg'>

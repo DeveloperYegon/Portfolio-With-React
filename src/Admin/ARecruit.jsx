@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { auth, db, createUserWithEmailAndPassword, setDoc, doc } from "../firebase";
-import { useNavigate, Link } from 'react-router-dom';
-import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { useNavigate  } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -49,19 +48,18 @@ function ARecruit() {
   };
 
   return (
-    <main className='bg-[#182B5C] p-5 h-screen'>
-      <section className='border-slate-950 shadow-lg shadow-[#7a5d4c] md:w-2/3 m-auto bg-[#46567C] rounded-lg h-full p-4 border'>
+    <main className='border md:m-5 m-2 rounded-xl h-full bg-white border-slate-950 p-4'>
         {errorMessages && (
           <div id="authmessage" className='text-center' style={{ color: 'red' }}>
             {errorMessages}
           </div>
         )}
-        <p className='text-center text-white p-3 text-4xl'>Register Admin</p>
+        <p className='text-center text-black font-bold p-3 text-4xl'>Register Admin</p>
         <hr className='h-1 bg-[#ED7D3B] w-[50%] m-auto' />
 
         {/* Admin registration form */}
         <form className='m-4 p-4 rounded flex flex-col' onSubmit={handleSubmit(onSubmit)} noValidate>
-          <label className='py-4 text-white font-bold' htmlFor="name">Name:</label>
+          <label className='py-4 text-black font-bold' htmlFor="name">Name:</label>
           <input
             className='p-2 border border-slate-600 rounded-xl'
             type="text"
@@ -70,7 +68,7 @@ function ARecruit() {
           />
           <p className='text-red-500 text-left text-[12px]'>{errors.name?.message}</p>
 
-          <label className='py-4 text-white font-bold' htmlFor="email">Email:</label>
+          <label className='py-4 text-black font-bold' htmlFor="email">Email:</label>
           <input
             className='p-2 border border-slate-600 rounded-xl'
             type="email"
@@ -85,7 +83,7 @@ function ARecruit() {
           />
           <p className='text-red-500 text-left text-[12px]'>{errors.email?.message}</p>
 
-          <label className='py-4 text-white font-bold' htmlFor="password">Password:</label>
+          <label className='py-4 text-black font-bold' htmlFor="password">Password:</label>
           <input
             className='p-2 border border-slate-600 rounded-xl'
             type={showPassword ? 'text' : 'password'}
@@ -98,14 +96,13 @@ function ARecruit() {
               }
             })}
           />
-          <button type="button" onClick={handleToggle} id="togglePassword">
-            {showPassword ? <FaRegEye /> : <FaRegEyeSlash />} Show Password
+          <button type="button" className='text-[#000] px-3  text-left items-center justify-center ' onClick={handleToggle} id="togglePassword">
+             Show Password
           </button>
           <p className='text-red-500 text-left text-[12px]'>{errors.password?.message}</p>
 
-          <input className='bg-[#ED7D3B] p-3 rounded-xl m-3' type="submit" value={isLoading ? "Submitting..." : "Submit"} disabled={isLoading} />
+          <input className='bg-[#ED7D3B] font-bold p-3 rounded-xl m-3' type="submit" value={isLoading ? "Submitting..." : "Submit"} disabled={isLoading} />
         </form>
-      </section>
 
       <ToastContainer
         position="top-center"

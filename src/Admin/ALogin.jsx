@@ -27,7 +27,8 @@ const onSubmit = async (data) => {
     await signInWithEmailAndPassword(auth, email, password);
     notifySuccess();
     reset();
-    setTimeout(() => navigate('/blogs'), 2000);
+    localStorage.setItem('token', 'logged-in');
+    setTimeout(() => navigate('/add-blog'), 2000);
   } catch (error) {
     setErrorMessages("Invalid Email/Password");
     notifyError("Invalid Email/Password");
@@ -56,6 +57,7 @@ const onSubmit = async (data) => {
     <main className=' bg-[#182B5C] p-5 h-screen '>
         
     <section className=' border-slate-950  shadow-lg shadow-[#7a5d4c] md:w-2/3 m-auto  bg-[#46567C] rounded-lg h-full p-4 border'>
+    
     <p className='text-center text-black p-2' id='authmessage'></p>
 
         < p className='text-center text-white text-4xl p-4'>Login</p>

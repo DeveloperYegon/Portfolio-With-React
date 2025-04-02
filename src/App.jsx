@@ -5,12 +5,12 @@ import Home from './Pages/Home'
 import { BrowserRouter, Route, Routes} from 'react-router-dom'
 import Contact from './Pages/Contact'
 import Blog from './Pages/Blog'
-import Notifications from './Pages/Notifications'
 import Donate from './Pages/Donate'
 import ALogin from './Admin/ALogin'
 import ABlog from './Admin/ABlog'
-import ANotifications from './Admin/ANotifications'
-import ARecruit from './Admin/ARecruit'
+// import ANotifications from './Admin/ANotifications'
+// import Notifications from './Pages/Notifications'
+// import ARecruit from './Admin/ARecruit'
 
 function App( ) {
 
@@ -21,13 +21,13 @@ function App( ) {
           <Routes>
             <Route path='/' element={<Home/>}/>
             <Route path='/contact' element={<Contact/>}/>
-            <Route path='/notifications' element={<Notifications/>}/>
+            {/* <Route path='/notifications' element={<Notifications/>}/> */}
             <Route path='/donate' element={<Donate/>} />
 
             <Route path='/blogs' element={<Blog/>}/>
-            <Route path='/notify' element={<ANotifications/>}/>
+            {/* <Route path='/notify' element={<ANotifications/>}/> */}
            <Route path='/add-blog' element={<ABlog/>}/>
-           <Route path='/add-admin' element={<ARecruit/>}/>
+           {/* <Route path='/add-admin' element={<ARecruit/>}/> */}
            <Route path='/login' element={<ALogin/>}/>
            
            

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
-import { db, setDoc, doc } from "../firebase"; // Removed unnecessary imports
+import { db, setDoc, doc } from "../firebase"; 
 import { getAuth } from "firebase/auth";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,7 +11,6 @@ import 'react-toastify/dist/ReactToastify.css';
 function Contact() {
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const [errorMessages, setErrorMessages] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
   const [countries, setCountries] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -35,20 +34,17 @@ function Contact() {
     const { name, email, message, country } = data;
 
     try {
-      if (!user) {
-        throw new Error("User is not authenticated.");
-      }
+   
 
-      await setDoc(doc(db, "contacts", user.uid), { // Use email as ID if no uid
+      await setDoc(doc(db, "contacts",email), { // Use email as ID if no uid
         name,
         email,
         message,
         country,
-        timestamp: new Date(),
+        timestamp: new Date().toISOString(),
       });
 
       console.log("User data saved to Firestore");
-      setSuccessMessage("Thank you! Your message has been sent.");
       reset();
       notifySuccess(); // Show success toast
 

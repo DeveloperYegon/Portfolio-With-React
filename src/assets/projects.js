@@ -7,33 +7,41 @@ const projects=[
     {
         id:1,
         image:chatbot,
+        frontend:"ReactJS and  Redux, Tailwind CSS",
+        backend:"Nodejs,Cloud Firestore for data storage, ExpressJS, Langchain,Retrieval Augmented Generation (RAG) pipeline,gemini-flash model API for text generation",
         title:"Text Generation Chatbot",
         webLink:"https://chatbot-five-eosin.vercel.app",
-        description:"This is a web application build with React for frontend. Redux for state management. Nodejs, ExpressJS for backend. Cloud Firestore for data storage. Langchain for building RAG pipeline with gemini-flash model API to generate text based on the user's input."
+        description:"A chatbot web application build for text generate based on the user's input.It answers questions in all domains ranging from education, health, beauty,technology and technology."
        
     },
     {
         id:2,
         image:beautify,
         title:"Beautify AI",
+          frontend:"ReactJS and   Redux",
+          backend:"Nodejs, ExpressJS, MongoDB,Langchain,Retrieval Augmented Generation (RAG) pipeline,gemini-flash model API for text generation",
         webLink:"https://beautify-ai.vercel.app",   
-        description:"A web application build with React and Redux for frontend Nodejs, ExpressJS, and MongoDB for backend. Langchain for building RAG pipiline with gemini-flash model to generate text based on the user's input."
+        description:"A chatbot web application for text generation.It is tailored for answering beauty questions.It answers questions about beauty products,make up, grooming style, beauty tips, and beauty routines."
 
      },
      {
         id:3,
         image:rai,
         title:"Rai Alliance",
+        backend:"Ruby on Rails",
+        frontend:"ReactJS",
         webLink:"https://www.rai-alliance.org",
-        description:"This is a company web application that I collaborated with company developers.React for frontend and Ruby on Rails for backend."
+        description:"RAI Alliance, an Ed-Tech Company web application that I collaborated with company developers. I was responsible for the frontend development. It is a platform for students and teachers to interact and share educational resources. It has a landing page, a blog, and a forum."
 
      },
      {
         id:4,
         image:tilted,
         title:"Tilt Technologies",
+        frontend:"ReactJS and  Redux, Tailwind CSS",
+        backend:"Firebase Realtime Database, Firebase Authentication, Nodejs, ExpressJS",
         webLink:"https://tilt-mauve.vercel.app",
-        description:" This is a web application build with React for frontend and firebase for backend. Firestore Realtime Database for storing user data."
+        description:" Tilt Technologies, IT consulting company web application with a landing page for showcasing company services, a blog, and a contact form. I was responsible for the fullstack development of the project."
      }
 ]
 export default projects;

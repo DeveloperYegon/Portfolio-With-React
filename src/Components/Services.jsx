@@ -7,7 +7,7 @@ function Services() {
                   <hr className=' w-[50%] h-1 bg-[#ED7D3B] m-auto'/>
                 <div className=' m-10 gap-5'>
                       <div className='flex my-3 bg-white font-bold text-black border p-5 items-center '>Web Development</div>
-                      <div className='fflex my-3 bg-white font-bold text-black border p-5 items-center'>API Integrations</div>
+                      <div className='fflex my-3 bg-white font-bold text-black border p-5 items-center'>API Development & Integrations</div>
                       <div className='flex my-3 bg-white font-bold text-black border p-5 items-center'>Wordpress Development</div>
                       <div className='flex my-3 bg-white font-bold text-black border p-5 items-center'>Android Development</div>
                 </div>
