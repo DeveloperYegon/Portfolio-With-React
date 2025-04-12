@@ -40,7 +40,7 @@ function ProjectPage() {
           <div className="text-center m-5">
             <p className="text-black text-2xl m-5 font-bold">{selectedProject.title}</p>
             <hr className="m-auto w-[50%] h-1 bg-[#ED7D3B]" />
-            <img  src={selectedProject.image} alt={selectedProject.title} className="w-full mt-4 rounded-lg border border-slate-900" />
+            <img src={selectedProject.image} alt={selectedProject.title} className="w-[200px] h-[200px]  m-auto rounded-lg border border-slate-900" />
             <p className="text-black font-bold italic ">Frontend Technologies: 
             <span className="text-green-500">
             {selectedProject.frontend}

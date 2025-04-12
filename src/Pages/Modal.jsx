@@ -6,9 +6,11 @@ const Modal = ({ show, onClose, children }) => {
   }
 
   return (
-    <div className="block fixed z-1 left-0 top-0 w-[100%] overflow-auto bg-black h-[100%]" onClick={onClose}>
-      <div className="top-[50%] left-[50%] bg-white absolute P-20 rounded-lg shadow shadow-[rgba(0,0,0,0.5)] translate-x-[-50%] translate-y-[-50%]" onClick={e => e.stopPropagation()}>
-        <span className=" absolute close top-5 right-10 text-black cursor-pointer text-2xl" onClick={onClose}>&times;</span>
+    <div  className={`fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50 ${
+      show ? 'block' : 'hidden'
+    }`} onClick={onClose}>
+      <div className="bg-white w-full max-w-6xl m-4 rounded-lg shadow-lg" onClick={e => e.stopPropagation()}>
+        <span className=" absolute text-4xl bg-black close top-5 right-10 text-white rounded-full px-3 cursor-pointer " onClick={onClose}>&times;</span>
         <div>{children}</div>
       </div>
     </div>

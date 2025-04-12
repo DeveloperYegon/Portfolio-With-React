@@ -8,14 +8,15 @@ import Blog from './Pages/Blog'
 import Donate from './Pages/Donate'
 import ALogin from './Admin/ALogin'
 import ABlog from './Admin/ABlog'
-// import ANotifications from './Admin/ANotifications'
-// import Notifications from './Pages/Notifications'
-// import ARecruit from './Admin/ARecruit'
+import PrivateRoute from"./Components/PrivateRoute"
+import BlogDetails from "./Components/BlogDetails"
+import { BlogProvider } from './contexts/BlogContext'
 
 function App( ) {
 
   return (
-    <div className='bg-[#182B5C]'>     
+    <div className='bg-[#182B5C]'>    
+     <BlogProvider>
       <BrowserRouter>
           <Navbar/>
           <Routes>
@@ -23,10 +24,15 @@ function App( ) {
             <Route path='/contact' element={<Contact/>}/>
             {/* <Route path='/notifications' element={<Notifications/>}/> */}
             <Route path='/donate' element={<Donate/>} />
+            <Route path="/blogs/:id" element={<BlogDetails />} />
 
             <Route path='/blogs' element={<Blog/>}/>
             {/* <Route path='/notify' element={<ANotifications/>}/> */}
-           <Route path='/add-blog' element={<ABlog/>}/>
+           <Route path='/add-blog'  element={
+          <PrivateRoute>
+            <ABlog/>
+          </PrivateRoute>
+        }/>
            {/* <Route path='/add-admin' element={<ARecruit/>}/> */}
            <Route path='/login' element={<ALogin/>}/>
            
@@ -35,6 +41,7 @@ function App( ) {
           </Routes>
           <Footer/>
       </BrowserRouter>
+      </BlogProvider> 
     
     </div>
   )

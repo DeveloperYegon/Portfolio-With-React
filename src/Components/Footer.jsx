@@ -45,7 +45,7 @@ function Footer() {
 
                       <li>  <Link to='https://medium.com/@developeryegon'><p className='text-center flex items-center gap-2 rounded-xl p-3 border m-5'><FaMedium/></p></Link></li>
     
-                      <li> <Link to='/login'>
+                      <li> <Link to='/add-blog'>
                       <p className='text-center flex items-center rounded-xl gap-2 p-3 border m-5'>
                               Post A Blog
                         </p>

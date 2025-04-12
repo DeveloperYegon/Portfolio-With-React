@@ -7,8 +7,12 @@ const BuyMeCoffee = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Call your server to initiate the STK Push
-    axios.post('/api/stkpush', { phone, amount })
+    let formattedPhone = phone;
+    if (phone.startsWith('0')) {
+      formattedPhone = '254' + phone.slice(1);
+    }
+  
+    axios.post('http://localhost:5000/api/stkpush', { phone: formattedPhone, amount })
       .then(response => console.log(response.data))
       .catch(error => console.error(error));
   }
@@ -24,7 +28,7 @@ const BuyMeCoffee = () => {
       <input
         type="text"
         value={phone}
-        className='p-3 rounded-xl'
+        className='p-3 text-black rounded-xl'
         onChange={(e) => setPhone(e.target.value)}
         placeholder="Enter Phone Number"
       />
@@ -32,7 +36,7 @@ const BuyMeCoffee = () => {
       <input
         type="number"
         value={amount}
-        className='p-3 rounded-xl'
+        className='p-3 text-black rounded-xl'
         onChange={(e) => setAmount(e.target.value)}
         placeholder="Enter Amount"
       />

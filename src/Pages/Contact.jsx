@@ -80,8 +80,7 @@ function Contact() {
           {errorMessages && <div style={{ color: 'red' }}>{errorMessages}</div>}
           {/* {successMessage && <div style={{ color: 'green' }}>{successMessage}</div>} */}
 
-          <h3 className='text-center text-[#fff] text-4xl py-4'>Get in Touch</h3>
-          <hr className='m-auto bg-[#ED7D3B] w-[50%] h-1' />
+          
 
           <form className='flex flex-col' noValidate onSubmit={handleSubmit(onSubmit)}>
             <label className='py-3 font-bold' htmlFor="contactname">Name:</label>
