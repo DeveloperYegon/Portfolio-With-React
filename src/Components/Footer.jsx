@@ -51,7 +51,7 @@ function Footer() {
                         </p>
                          </Link></li>
                          <li> 
-                      <p className='text-center flex items-center rounded-xl gap-2 p-3 border m-5' onClick={handleSignOut}>
+                      <p className='text-center flex items-center cursor-pointer rounded-xl gap-2 p-3 border m-5' onClick={handleSignOut}>
                               Logout
                         </p>
                          </li>

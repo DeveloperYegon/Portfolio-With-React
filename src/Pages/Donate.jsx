@@ -20,7 +20,7 @@ const BuyMeCoffee = () => {
   return (
 
     <main className='text-[#fff] h-full rounded-xl shadow-lg shadow-[#7a5d4c] p-10  bg-[#46567C]  py-3 md:mx-20 m-4'>
-      <h2 className='text-center text-white text-4xl py-4'>Buy Me Coffee</h2>
+      <h2 className='text-center text-white md:text-4xl py-4'>Buy Me Coffee</h2>
       <hr className='w-[50%] m-auto h-1  bg-white'/>
 
     <form className= '  md:p-4 rounded flex flex-col w-2/3 m-auto' onSubmit={handleSubmit}>

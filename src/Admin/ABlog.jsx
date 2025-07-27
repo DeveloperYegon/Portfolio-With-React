@@ -32,8 +32,8 @@ function ABlog() {
       await addDoc(collection(db, "blogs"), {
         title,
         description,
-        authorMail: user?.email || "anonymous",
-        author: user?.name || "Unknown",
+        authorMail: user?.email || "Anonymous",
+        author: user?.name || "Anonymous",
         timestamp: serverTimestamp(),
       });
 

@@ -13,7 +13,7 @@ function Skills() {
   return (
    <main className='text-[#fff] h-full rounded-xl shadow-lg shadow-[#634939] mx-4 my-10 bg-[#46567C]  py-3 md:mx-20 px-3 md:h-full'>
    
-            <h3 className='text-center text-4xl py-3'>Skills and Expertise</h3>
+            <h3 className='text-center md:text-4xl py-3'>Skills and Expertise</h3>
             <hr className='bg-[#ED7D3B] w-[50%] h-1 m-auto'/>
 
             <div className=' m-5'>
